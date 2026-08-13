@@ -1,0 +1,115 @@
+/* ═══════════════════════════════════════════════════════
+   Course Portal — Custom CSS (SAP Horizon / Fiori overlay)
+   ═══════════════════════════════════════════════════════ */
+
+/* ── Hero Banner ── */
+.cpHeroBanner {
+    background: linear-gradient(135deg, #0a6ed1 0%, #1b4ba8 100%);
+    padding: 28px 20px 24px;
+}
+.cpHeroBanner .sapMTitle,
+.cpHeroBanner .sapMText,
+.cpHeroBanner .sapUiIcon {
+    color: #fff !important;
+}
+
+/* ── Profile Panel border accent ── */
+.cpProfilePanel.sapMPanel {
+    border-left: 4px solid #0a6ed1;
+}
+
+/* ── Course tiles on Courses page ── */
+.cpCourseTile.cpBlue.sapMGT {
+    border-top: 4px solid #0a6ed1 !important;
+    border-radius: 10px;
+}
+.cpCourseTile.cpPurple.sapMGT {
+    border-top: 4px solid #7b40f2 !important;
+    border-radius: 10px;
+}
+.cpCourseTile.cpBlue .sapMGTHdrTxt {
+    color: #0a6ed1 !important;
+}
+.cpCourseTile.cpPurple .sapMGTHdrTxt {
+    color: #7b40f2 !important;
+}
+
+/* ── Course Detail header (FormattedText — style attr is sanitized out, use class) ── */
+.cpCourseHeaderTitle {
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+.cpCourseHeaderMeta {
+    text-align: center;
+    margin-top: 8px;
+    color: #555;
+}
+
+/* ── Lesson content body ── */
+.cpLessonPanel.sapMPanel {
+    border-left: 4px solid #0a6ed1;
+    border-radius: 8px;
+}
+.cpLessonBody {
+    line-height: 1.85;
+}
+.cpLessonBody h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1a2e5a;
+    margin: 1.2rem 0 0.5rem;
+}
+.cpLessonBody h3:first-child { margin-top: 0; }
+.cpLessonBody h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #0a6ed1;
+    margin: 1rem 0 0.4rem;
+}
+.cpLessonBody h4.purple { color: #7b40f2; }
+.cpLessonBody p {
+    color: #374151;
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+}
+.cpLessonBody ul,
+.cpLessonBody ol {
+    padding-left: 1.5rem;
+    margin-bottom: 0.9rem;
+}
+.cpLessonBody li {
+    font-size: 0.9rem;
+    color: #374151;
+    margin-bottom: 0.35rem;
+}
+.cpLessonBody code {
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    padding: 1px 6px;
+    font-family: "Cascadia Code", "Consolas", "Courier New", monospace;
+    font-size: 0.82rem;
+    color: #1a2e5a;
+}
+.cpLessonBody .highlight { color: #0a6ed1; font-weight: 600; }
+.cpLessonBody .highlight.purple { color: #7b40f2; }
+.cpLessonBody .note {
+    background: #e8f0fe;
+    border-left: 4px solid #0a6ed1;
+    padding: 10px 14px;
+    border-radius: 0 6px 6px 0;
+    margin: 1rem 0;
+    font-size: 0.85rem;
+    color: #1e3a8a;
+}
+.cpLessonBody .note.purple {
+    background: #ede9fe;
+    border-color: #7b40f2;
+    color: #4c1d95;
+}
+
+/* ── Responsive grid tiles ── */
+@media (max-width: 600px) {
+    .cpCourseTile.sapMGT { width: 100% !important; }
+}

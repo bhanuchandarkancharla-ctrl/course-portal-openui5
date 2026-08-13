@@ -1,0 +1,2 @@
+sap.ui.define(["sap/ui/core/UIComponent","courseportal/data"],function(t,e){"use strict";return t.extend("courseportal.Component",{metadata:{manifest:"json"},init:function(){t.prototype.init.apply(this,arguments);window._cpCourses=e.COURSES;window._cpLessons=e.LESSONS;this.getRouter().initialize()}})});
+//# sourceMappingURL=Component.js.map

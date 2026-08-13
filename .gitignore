@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+
+# UI5 build output
+dist/
+.ui5/
+
+# Editor / OS
+.vscode/settings.json
+.DS_Store
+Thumbs.db
+*.log
+
+# Environment
+.env
+.env.local
+
+node_modules/
+dist/
+.scp/
+.env
+Makefile*.mta
+mta_archives
+mta-*
+resources
+archive.zip
+.*_mta_build_tmp

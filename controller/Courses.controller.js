@@ -1,0 +1,2 @@
+sap.ui.define(["sap/ui/core/mvc/Controller"],function(e){"use strict";return e.extend("courseportal.controller.Courses",{onInit:function(){},onNavHome:function(){this.getOwnerComponent().getRouter().navTo("home")},onOpenCourse:function(e){var o=e.getSource().data("courseId");this.getOwnerComponent().getRouter().navTo("courseDetail",{courseId:o})}})});
+//# sourceMappingURL=Courses.controller.js.map

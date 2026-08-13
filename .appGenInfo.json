@@ -1,0 +1,21 @@
+{
+  "generator": "@sap/generator-fiori",
+  "generatorVersion": "1.14.5",
+  "generationDate": "2025-08-12",
+  "generationPlatform": "VSCode",
+  "template": {
+    "name": "basic",
+    "version": "1.14.5"
+  },
+  "app": {
+    "id": "courseportal",
+    "name": "Course Portal",
+    "description": "ANITS Online Course Portal — OpenUI5 Application",
+    "sourceTemplate": "basic"
+  },
+  "ui5": {
+    "version": "1.120.19",
+    "framework": "OpenUI5",
+    "theme": "sap_horizon"
+  }
+}

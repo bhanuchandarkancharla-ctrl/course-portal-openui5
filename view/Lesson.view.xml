@@ -1,0 +1,107 @@
+<mvc:View
+    controllerName="courseportal.controller.Lesson"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    displayBlock="true">
+
+    <Page
+        id="lessonPage"
+        showHeader="true"
+        backgroundDesign="Solid">
+
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <Button
+                        icon="sap-icon://nav-back"
+                        type="Transparent"
+                        tooltip="Back to Course"
+                        press=".onNavBack" />
+                    <Title text="Lesson Viewer" titleStyle="H5" />
+                </contentLeft>
+                <contentRight>
+                    <Text text="{lesson>/counter}" />
+                </contentRight>
+            </Bar>
+        </customHeader>
+
+        <content>
+            <VBox class="sapUiResponsiveMargin">
+
+                <!-- Lesson title banner -->
+                <Panel
+                    backgroundDesign="Transparent"
+                    class="sapUiSmallMarginBottom">
+                    <content>
+                        <VBox alignItems="Center" class="sapUiSmallMarginBeginEnd sapUiSmallMarginTopBottom">
+                            <core:Icon
+                                src="{= ${lesson>/isRProg} ? 'sap-icon://pie-chart' : 'sap-icon://html5'}"
+                                size="1.8rem"
+                                color="{= ${lesson>/isRProg} ? '#7b40f2' : '#0a6ed1'}"
+                                class="sapUiTinyMarginBottom" />
+                            <Title
+                                text="{lesson>/title}"
+                                titleStyle="H4"
+                                textAlign="Center"
+                                wrapping="true" />
+                            <ObjectStatus
+                                text="{lesson>/counter}"
+                                state="{= ${lesson>/isRProg} ? 'Warning' : 'Information'}"
+                                class="sapUiSmallMarginTop" />
+                        </VBox>
+                    </content>
+                </Panel>
+
+                <!-- Lesson content -->
+                <Panel
+                    backgroundDesign="Solid"
+                    class="sapUiSmallMarginBottom cpLessonPanel">
+                    <content>
+                        <VBox class="sapUiSmallMargin">
+                            <FormattedText
+                                id="lessonContent"
+                                htmlText="{lesson>/html}"
+                                width="100%"
+                                class="cpLessonBody" />
+                        </VBox>
+                    </content>
+                </Panel>
+
+                <!-- Navigation strip -->
+                <Toolbar class="sapUiSmallMarginBottom">
+                    <Button
+                        text="← Back to Course"
+                        type="Transparent"
+                        press=".onNavBack" />
+                    <ToolbarSpacer />
+                    <Button
+                        id="prevBtn"
+                        text="← Previous"
+                        type="Default"
+                        enabled="{lesson>/hasPrev}"
+                        press=".onPrevLesson" />
+                    <Text text="{lesson>/counter}" class="sapUiSmallMarginBeginEnd" />
+                    <Button
+                        id="nextBtn"
+                        text="Next →"
+                        type="Emphasized"
+                        enabled="{lesson>/hasNext}"
+                        press=".onNextLesson" />
+                </Toolbar>
+
+            </VBox>
+        </content>
+
+        <footer>
+            <OverflowToolbar>
+                <Button text="← Back to Course" type="Transparent" press=".onNavBack" />
+                <ToolbarSpacer />
+                <Text text="© 2025 Bolem Siva Lakshmi" />
+                <ToolbarSpacer />
+            </OverflowToolbar>
+        </footer>
+
+    </Page>
+
+</mvc:View>
