@@ -3,6 +3,8 @@
 An **OpenUI5 / SAPUI5** single-page application for the ANITS Online Course Portal.  
 Built with the **SAP Horizon** theme, Fiori design patterns, and the **UI5 Tooling v4** (`@ui5/cli`) build & serve pipeline.
 
+🌐 **Live Demo:** [https://bhanuchandarkancharla-ctrl.github.io/course-portal-openui5/](https://bhanuchandarkancharla-ctrl.github.io/course-portal-openui5/)
+
 ---
 
 ## 📋 Overview
@@ -17,6 +19,7 @@ Built with the **SAP Horizon** theme, Fiori design patterns, and the **UI5 Tooli
 | **Manifest Version** | 1.65.0 |
 | **Author** | Bolem Siva Lakshmi |
 | **Institution** | ANITS, Visakhapatnam |
+| **Repo** | [github.com/bhanuchandarkancharla-ctrl/course-portal-openui5](https://github.com/bhanuchandarkancharla-ctrl/course-portal-openui5) |
 
 ---
 
@@ -26,7 +29,7 @@ Built with the **SAP Horizon** theme, Fiori design patterns, and the **UI5 Tooli
 course-portal/
 │
 ├── webapp/                          ← All application source files
-│   ├── index.html                   ← App entry point (UI5 Tooling bootstrap)
+│   ├── index.html                   ← App entry point (OpenUI5 CDN bootstrap)
 │   ├── Component.js                 ← UIComponent — initialises models & router
 │   ├── manifest.json                ← App descriptor (routing, models, CSS, i18n)
 │   ├── data.js                      ← Course metadata, topics & lesson HTML content
@@ -52,6 +55,7 @@ course-portal/
 │       └── i18n.properties          ← UI text labels (appTitle, appDescription…)
 │
 ├── node_modules/                    ← Installed via `npm install` (git-ignored)
+├── dist/                            ← Production build output (git-ignored)
 ├── .appGenInfo.json                 ← Generator / tooling metadata
 ├── .gitignore                       ← Ignores node_modules/, dist/, .ui5/
 ├── eslint.config.mjs                ← ESLint flat config for webapp JS files
@@ -76,8 +80,7 @@ course-portal/
 npm install
 ```
 
-Installs `@ui5/cli` v4, `eslint`, and `globals` into `node_modules/`.  
-OpenUI5 framework libraries are also downloaded into the local UI5 cache.
+Installs `@ui5/cli` v4, `eslint`, `gh-pages`, and `globals` into `node_modules/`.
 
 ### 2. Start development server
 
@@ -86,7 +89,7 @@ npm start
 ```
 
 Opens at **`http://localhost:8080`**.  
-UI5 Tooling serves OpenUI5 from the local cache — no CDN required.
+OpenUI5 is loaded from the public CDN (`https://ui5.sap.com`).
 
 ### 3. Build for production
 
@@ -103,6 +106,39 @@ npm run lint
 ```
 
 Runs ESLint on all files under `webapp/`.
+
+---
+
+## ☁️ Deployment
+
+### GitHub Pages
+
+This app is deployed to **GitHub Pages** using the `gh-pages` package.
+
+```bash
+# Build the app
+npm run build
+
+# Deploy dist/ to the gh-pages branch
+npm run deploy-gh
+```
+
+The `deploy-gh` script publishes the contents of `dist/` to the `gh-pages` branch.  
+GitHub Pages is configured to serve from that branch at:
+
+🌐 **[https://bhanuchandarkancharla-ctrl.github.io/course-portal-openui5/](https://bhanuchandarkancharla-ctrl.github.io/course-portal-openui5/)**
+
+> **Note:** The OpenUI5 bootstrap uses the public CDN (`https://ui5.sap.com/1.120.19/resources/sap-ui-core.js`) so no local resources need to be deployed.
+
+### npm scripts reference
+
+| Script | Command | Description |
+|---|---|---|
+| `start` | `npm start` | Dev server with Fiori launchpad sandbox |
+| `start-noflp` | `npm run start-noflp` | Dev server opening `index.html` directly |
+| `build` | `npm run build` | Production build → `dist/` |
+| `lint` | `npm run lint` | ESLint on `webapp/` |
+| `deploy-gh` | `npm run deploy-gh` | Deploy `dist/` to GitHub Pages |
 
 ---
 
