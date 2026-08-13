@@ -1,0 +1,180 @@
+<mvc:View
+    controllerName="courseportal.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    displayBlock="true">
+
+    <Page
+        id="homePage"
+        showHeader="false"
+        backgroundDesign="Solid">
+
+        <content>
+            <!-- ═══ HERO BANNER (full-width, CSS-styled) ═══ -->
+            <VBox
+                width="100%"
+                alignItems="Center"
+                class="cpHeroBanner">
+                <core:Icon
+                    src="sap-icon://learning-assistant"
+                    size="2.5rem"
+                    color="white"
+                    class="sapUiSmallMarginTop" />
+                <Title
+                    text="Online Course Portal"
+                    titleStyle="H3"
+                    textAlign="Center"
+                    wrapping="true"
+                    class="sapUiTinyMarginTop" />
+                <Text
+                    text="Learn • Practice • Grow"
+                    textAlign="Center"
+                    class="sapUiTinyMarginTop sapUiSmallMarginBottom" />
+            </VBox>
+
+            <!-- ═══ PROFILE + ABOUT (two-column on desktop) ═══ -->
+            <l:Grid
+                defaultSpan="L6 M12 S12"
+                hSpacing="1"
+                class="sapUiResponsiveMargin">
+
+                <!-- PROFILE CARD -->
+                <l:content>
+                    <Panel
+                        headerText="Instructor Profile"
+                        expandable="false"
+                        class="sapUiResponsiveMargin cpProfilePanel">
+                        <content>
+                            <VBox class="sapUiSmallMargin">
+                                <!-- Avatar + Name row -->
+                                <HBox alignItems="Center" class="sapUiSmallMarginBottom">
+                                    <Avatar
+                                        initials="BSL"
+                                        displaySize="L"
+                                        backgroundColor="Accent6"
+                                        class="sapUiSmallMarginEnd" />
+                                    <VBox>
+                                        <Title text="Bolem Siva Lakshmi" titleStyle="H4" />
+                                        <Label text="Assistant Professor — CSE" design="Bold" />
+                                        <Text text="ANITS, Visakhapatnam" />
+                                    </VBox>
+                                </HBox>
+
+                                <!-- Detail Form -->
+                                <f:SimpleForm
+                                    editable="false"
+                                    layout="ResponsiveGridLayout"
+                                    labelSpanL="4" labelSpanM="4" labelSpanS="12"
+                                    adjustLabelSpan="false"
+                                    columnsL="1" columnsM="1">
+                                    <f:content>
+                                        <Label text="Department" />
+                                        <Text text="CSE &amp; CSE-AI&amp;ML" />
+
+                                        <Label text="Qualification" />
+                                        <Text text="M.Tech (Computer Science)" />
+
+                                        <Label text="Experience" />
+                                        <Text text="5+ Years of Teaching Experience" />
+
+                                        <Label text="Specialisation" />
+                                        <Text text="Web Technologies, Data Science, R Programming" />
+
+                                        <Label text="Email" />
+                                        <Link text="bolemsivalakshmi@anits.edu.in"
+                                              href="mailto:bolemsivalakshmi@anits.edu.in" />
+
+                                        <Label text="Courses" />
+                                        <Text text="Full Stack Web Development, R Programming" />
+                                    </f:content>
+                                </f:SimpleForm>
+
+                                <Button
+                                    text="View My Courses →"
+                                    type="Emphasized"
+                                    class="sapUiSmallMarginTop"
+                                    press=".onNavToCourses" />
+                            </VBox>
+                        </content>
+                    </Panel>
+                </l:content>
+
+                <!-- ABOUT CARD -->
+                <l:content>
+                    <Panel
+                        headerText="About"
+                        expandable="false"
+                        class="sapUiResponsiveMargin">
+                        <content>
+                            <VBox class="sapUiSmallMargin">
+                                <FormattedText
+                                    htmlText="&lt;p&gt;Welcome to the Course Portal. I am &lt;strong&gt;Bolem Siva Lakshmi&lt;/strong&gt;, Assistant Professor in the Department of Computer Science &amp;amp; Engineering at ANITS, Visakhapatnam. This portal is designed to provide students with structured, unit-wise course material, lab experiments, and reference resources to support their learning journey.&lt;/p&gt;&lt;p style='margin-top:12px'&gt;My teaching areas include Full Stack Web Development, R Programming, and Data Science. I believe in practical, hands-on learning — every topic here comes with real examples, exercises, and lab experiments.&lt;/p&gt;"
+                                    width="100%" />
+
+                                <!-- Stats strip -->
+                                <HBox justifyContent="SpaceAround" class="sapUiMediumMarginTop" wrap="Wrap">
+                                    <VBox alignItems="Center" class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
+                                        <Title text="2" titleStyle="H2" />
+                                        <Text text="Courses" />
+                                    </VBox>
+                                    <VBox alignItems="Center" class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
+                                        <Title text="10" titleStyle="H2" />
+                                        <Text text="Lab Units" />
+                                    </VBox>
+                                    <VBox alignItems="Center" class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
+                                        <Title text="5+" titleStyle="H2" />
+                                        <Text text="Years Teaching" />
+                                    </VBox>
+                                    <VBox alignItems="Center" class="sapUiSmallMarginBottom">
+                                        <Title text="50+" titleStyle="H2" />
+                                        <Text text="Topics &amp; Labs" />
+                                    </VBox>
+                                </HBox>
+                            </VBox>
+                        </content>
+                    </Panel>
+
+                    <!-- Quick Links -->
+                    <Panel
+                        headerText="Quick Links"
+                        expandable="false"
+                        class="sapUiResponsiveMargin">
+                        <content>
+                            <List showSeparators="Inner">
+                                <StandardListItem
+                                    title="Full Stack Web Development"
+                                    description="CSE-AI &amp; ML · III Year – I Sem"
+                                    icon="sap-icon://html5"
+                                    iconInset="false"
+                                    type="Active"
+                                    press=".onOpenFSWD" />
+                                <StandardListItem
+                                    title="R Programming"
+                                    description="CSE · II Year – II Sem"
+                                    icon="sap-icon://pie-chart"
+                                    iconInset="false"
+                                    type="Active"
+                                    press=".onOpenRProg" />
+                            </List>
+                        </content>
+                    </Panel>
+                </l:content>
+
+            </l:Grid>
+        </content>
+
+        <!-- ═══ FOOTER BAR ═══ -->
+        <footer>
+            <OverflowToolbar>
+                <ToolbarSpacer />
+                <Text text="© 2025 Bolem Siva Lakshmi — All Rights Reserved" />
+                <ToolbarSpacer />
+            </OverflowToolbar>
+        </footer>
+
+    </Page>
+
+</mvc:View>

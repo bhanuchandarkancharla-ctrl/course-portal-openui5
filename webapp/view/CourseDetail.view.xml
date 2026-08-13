@@ -1,0 +1,124 @@
+<mvc:View
+    controllerName="courseportal.controller.CourseDetail"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    displayBlock="true">
+
+    <Page
+        id="courseDetailPage"
+        showHeader="true"
+        backgroundDesign="Solid">
+
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <Button
+                        icon="sap-icon://nav-back"
+                        type="Transparent"
+                        tooltip="Back to Courses"
+                        press=".onNavBack" />
+                    <Title text="{detail>/courseName}" titleStyle="H4" />
+                </contentLeft>
+                <contentRight>
+                    <ObjectStatus
+                        text="{= ${detail>/isRProg} ? 'R Programming' : 'Full Stack'}"
+                        state="{= ${detail>/isRProg} ? 'Warning' : 'Information'}"
+                        icon="{= ${detail>/isRProg} ? 'sap-icon://pie-chart' : 'sap-icon://html5'}" />
+                </contentRight>
+            </Bar>
+        </customHeader>
+
+        <content>
+            <VBox class="sapUiResponsiveMargin">
+
+                <!-- Course header info card -->
+                <Panel
+                    backgroundDesign="Transparent"
+                    class="sapUiSmallMarginBottom">
+                    <content>
+                        <VBox alignItems="Center" class="sapUiMediumMarginTopBottom sapUiSmallMarginBeginEnd">
+                            <core:Icon
+                                src="{= ${detail>/isRProg} ? 'sap-icon://pie-chart' : 'sap-icon://html5'}"
+                                size="2.5rem"
+                                color="{= ${detail>/isRProg} ? '#7b40f2' : '#0a6ed1'}"
+                                class="sapUiSmallMarginBottom" />
+                            <FormattedText
+                                id="courseHeaderTitle"
+                                htmlText=""
+                                width="100%" />
+                            <FormattedText
+                                id="courseHeaderMeta"
+                                htmlText=""
+                                width="100%"
+                                class="sapUiSmallMarginTop" />
+                        </VBox>
+                    </content>
+                </Panel>
+
+                <!-- Topics Table -->
+                <Table
+                    id="topicsTable"
+                    items="{detail>/topics}"
+                    alternateRowColors="true"
+                    sticky="ColumnHeaders"
+                    growing="false"
+                    noDataText="No topics available.">
+
+                    <headerToolbar>
+                        <OverflowToolbar>
+                            <Title text="Topics &amp; Lab Experiments" titleStyle="H5" />
+                            <ToolbarSpacer />
+                            <ObjectStatus
+                                text="{detail>/topicsCount}"
+                                state="None" />
+                        </OverflowToolbar>
+                    </headerToolbar>
+
+                    <columns>
+                        <Column width="130px" hAlign="Begin">
+                            <Text text="Unit / Lab" />
+                        </Column>
+                        <Column hAlign="Begin">
+                            <Text text="Topic / Experiment" />
+                        </Column>
+                        <Column width="90px" hAlign="Center">
+                            <Text text="Status" />
+                        </Column>
+                    </columns>
+
+                    <items>
+                        <ColumnListItem
+                            type="{= ${detail>hasLesson} ? 'Navigation' : 'Inactive'}"
+                            highlight="{= ${detail>lab} ? 'Warning' : 'Information'}"
+                            press=".onTopicPress">
+                            <cells>
+                                <ObjectStatus
+                                    text="{detail>label}"
+                                    state="{= ${detail>lab} ? 'Warning' : 'Information'}"
+                                    icon="{= ${detail>lab} ? 'sap-icon://lab' : 'sap-icon://education'}" />
+                                <Text text="{detail>title}" wrapping="true" />
+                                <ObjectStatus
+                                    text="{= ${detail>hasLesson} ? 'Available' : 'Coming Soon'}"
+                                    state="{= ${detail>hasLesson} ? 'Success' : 'None'}"
+                                    icon="{= ${detail>hasLesson} ? 'sap-icon://accept' : 'sap-icon://time-entry-request'}" />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+
+            </VBox>
+        </content>
+
+        <footer>
+            <OverflowToolbar>
+                <Button text="← Back to Courses" type="Transparent" press=".onNavBack" />
+                <ToolbarSpacer />
+                <Text text="© 2025 Bolem Siva Lakshmi" />
+                <ToolbarSpacer />
+            </OverflowToolbar>
+        </footer>
+
+    </Page>
+
+</mvc:View>

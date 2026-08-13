@@ -1,0 +1,120 @@
+<mvc:View
+    controllerName="courseportal.controller.Courses"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    displayBlock="true">
+
+    <Page
+        id="coursesPage"
+        showHeader="true"
+        backgroundDesign="Solid">
+
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <Button
+                        icon="sap-icon://nav-back"
+                        text="Home"
+                        type="Transparent"
+                        press=".onNavHome" />
+                    <Title text="Our Courses" titleStyle="H4" />
+                </contentLeft>
+            </Bar>
+        </customHeader>
+
+        <content>
+            <VBox class="sapUiResponsiveMargin">
+                <!-- Page intro -->
+                <Panel backgroundDesign="Transparent" class="sapUiSmallMarginBottom">
+                    <content>
+                        <VBox class="sapUiSmallMarginBeginEnd sapUiSmallMarginTopBottom">
+                            <Title text="Our Courses" titleStyle="H3" class="sapUiSmallMarginBottom" />
+                            <Text text="Select a course below to explore unit-wise topics, lab experiments, and study material." />
+                        </VBox>
+                    </content>
+                </Panel>
+
+                <!-- ─── FSWD Card ─── -->
+                <l:Grid defaultSpan="L6 M12 S12" hSpacing="1">
+                    <l:content>
+                        <GenericTile
+                            class="sapUiTinyMarginBottom sapUiMediumMarginEnd cpCourseTile cpBlue"
+                            header="Full Stack Web Development"
+                            subheader="CSE-AI &amp; ML · III Year – I Sem"
+                            frameType="TwoByOne"
+                            press=".onOpenCourse"
+                            width="100%">
+                            <customData>
+                                <core:CustomData key="courseId" value="fswd" />
+                            </customData>
+                            <tileContent>
+                                <TileContent footer="Duration: 1 Semester · Units: 5 · Labs: Weekly">
+                                    <content>
+                                        <NumericContent
+                                            value="28"
+                                            unit="Topics &amp; Labs"
+                                            icon="sap-icon://html5"
+                                            iconDescription="FSWD"
+                                            valueColor="Good" />
+                                    </content>
+                                </TileContent>
+                            </tileContent>
+                        </GenericTile>
+                    </l:content>
+
+                    <!-- ─── R Programming Card ─── -->
+                    <l:content>
+                        <GenericTile
+                            class="sapUiTinyMarginBottom cpCourseTile cpPurple"
+                            header="R Programming"
+                            subheader="CSE · II Year – II Sem"
+                            frameType="TwoByOne"
+                            press=".onOpenCourse"
+                            width="100%">
+                            <customData>
+                                <core:CustomData key="courseId" value="rprog" />
+                            </customData>
+                            <tileContent>
+                                <TileContent footer="Duration: 15 Weeks · Units: 5 · Labs: Weekly">
+                                    <content>
+                                        <NumericContent
+                                            value="22"
+                                            unit="Topics &amp; Labs"
+                                            icon="sap-icon://pie-chart"
+                                            iconDescription="R Programming"
+                                            valueColor="Critical" />
+                                    </content>
+                                </TileContent>
+                            </tileContent>
+                        </GenericTile>
+                    </l:content>
+                </l:Grid>
+
+                <!-- Info strip -->
+                <MessageStrip
+                    text="Click any course tile to explore unit-wise topics and lab experiments."
+                    type="Information"
+                    showIcon="true"
+                    showCloseButton="false"
+                    class="sapUiSmallMarginTop" />
+            </VBox>
+        </content>
+
+        <footer>
+            <OverflowToolbar>
+                <Button
+                    icon="sap-icon://home"
+                    text="← Home"
+                    type="Transparent"
+                    press=".onNavHome" />
+                <ToolbarSpacer />
+                <Text text="© 2025 Bolem Siva Lakshmi — All Rights Reserved" />
+                <ToolbarSpacer />
+            </OverflowToolbar>
+        </footer>
+
+    </Page>
+
+</mvc:View>

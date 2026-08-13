@@ -1,0 +1,111 @@
+{
+    "_version": "1.65.0",
+    "sap.app": {
+        "id": "courseportal",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:basic",
+            "version": "1.14.5",
+            "toolsId": "d1555666-eb42-4ee2-85d7-47a70474339e"
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": false,
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "rootView": {
+            "viewName": "courseportal.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "app"
+        },
+        "dependencies": {
+            "minUI5Version": "1.120.0",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.ui.layout": {},
+                "sap.f": {},
+                "sap.ui.unified": {}
+            }
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "courseportal.i18n.i18n",
+                    "fallbackLocale": "en"
+                }
+            }
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "viewPath": "courseportal.view",
+                "controlId": "navContainer",
+                "controlAggregation": "pages",
+                "async": true
+            },
+            "routes": [
+                {
+                    "name": "home",
+                    "pattern": "",
+                    "target": "home"
+                },
+                {
+                    "name": "courses",
+                    "pattern": "courses",
+                    "target": "courses"
+                },
+                {
+                    "name": "courseDetail",
+                    "pattern": "courses/{courseId}",
+                    "target": "courseDetail"
+                },
+                {
+                    "name": "lesson",
+                    "pattern": "courses/{courseId}/lesson/{lessonId}",
+                    "target": "lesson"
+                }
+            ],
+            "targets": {
+                "home": {
+                    "viewName": "Home",
+                    "viewLevel": 1
+                },
+                "courses": {
+                    "viewName": "Courses",
+                    "viewLevel": 2
+                },
+                "courseDetail": {
+                    "viewName": "CourseDetail",
+                    "viewLevel": 3
+                },
+                "lesson": {
+                    "viewName": "Lesson",
+                    "viewLevel": 4
+                }
+            }
+        }
+    }
+}
