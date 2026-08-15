@@ -11,11 +11,6 @@ framework:
     - name: sap.ui.layout
     - name: sap.f
     - name: sap.ui.unified
-    - name: sap.ui.comp
-    - name: sap.ui.generic.app
-    - name: sap.ui.table
-    - name: sap.ushell
-    - name: themelib_sap_bluecrystal
     - name: themelib_sap_horizon
 server:
   customMiddleware:
@@ -29,8 +24,3 @@ server:
         port: 35729
         path: webapp
         delay: 300
-    - name: fiori-tools-preview
-      afterMiddleware: fiori-tools-appreload
-      configuration:
-        component: courseportal
-        ui5Theme: sap_horizon
