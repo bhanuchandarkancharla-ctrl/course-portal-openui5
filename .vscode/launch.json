@@ -16,32 +16,7 @@
             ],
             "args": [
                 "--open",
-                "test/flpSandbox.html#app-tile"
-            ],
-            "console": "internalConsole",
-            "internalConsoleOptions": "openOnSessionStart",
-            "outputCapture": "std",
-            "env": {
-                "DEBUG": "--inspect",
-                "FIORI_TOOLS_URL_PARAMS": "sap-ui-xx-viewCache=false"
-            }
-        },
-        {
-            "name": "Start course-portal-open sapui5 Mock",
-            "type": "node",
-            "request": "launch",
-            "cwd": "${workspaceFolder}",
-            "runtimeExecutable": "npx",
-            "windows": {
-                "runtimeExecutable": "npx.cmd"
-            },
-            "runtimeArgs": [
-                "fiori",
-                "run"
-            ],
-            "args": [
-                "--open",
-                "test/flpSandbox.html#app-tile"
+                "index.html"
             ],
             "console": "internalConsole",
             "internalConsoleOptions": "openOnSessionStart",
@@ -67,7 +42,7 @@
                 "--config",
                 "./ui5-local.yaml",
                 "--open",
-                "test/flpSandbox.html#app-tile"
+                "index.html"
             ],
             "console": "internalConsole",
             "internalConsoleOptions": "openOnSessionStart",

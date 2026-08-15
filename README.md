@@ -1,74 +1,74 @@
 # Course Portal — Bolem Siva Lakshmi
 
-An **OpenUI5 / SAPUI5** single-page application for the ANITS Online Course Portal.  
-Built with the **SAP Horizon** theme, Fiori design patterns, and the **UI5 Tooling v4** (`@ui5/cli`) build & serve pipeline.
+An **OpenUI5 / SAPUI5** single-page application for the ANITS Online Course Portal.
+Runs as a **standalone custom application** (no Fiori Launchpad), built with the **SAP Horizon** theme and the **UI5 Tooling v4** (`@ui5/cli`) build & serve pipeline.
 
 🌐 **Live Demo:** [https://bhanuchandarkancharla-ctrl.github.io/course-portal-openui5/](https://bhanuchandarkancharla-ctrl.github.io/course-portal-openui5/)
 
 ---
 
-## 📋 Overview
+## Overview
 
 | Property | Value |
 |---|---|
 | **App ID** | `courseportal` |
 | **Version** | 1.0.0 |
 | **UI Framework** | OpenUI5 1.120.19 |
-| **Theme** | `sap_horizon` (SAP Fiori Next) |
-| **Tooling** | `@ui5/cli` v4 |
+| **Theme** | `sap_horizon` |
+| **Tooling** | `@ui5/cli` v4, `@sap/ux-ui5-tooling` |
 | **Manifest Version** | 1.65.0 |
+| **Deployment mode** | Standalone (index.html) |
 | **Author** | Bolem Siva Lakshmi |
 | **Institution** | ANITS, Visakhapatnam |
 | **Repo** | [github.com/bhanuchandarkancharla-ctrl/course-portal-openui5](https://github.com/bhanuchandarkancharla-ctrl/course-portal-openui5) |
 
 ---
 
-## 🗂️ Project Structure
+## Project Structure
 
 ```
-course-portal/
+course-portal-open_sapui5/
 │
-├── webapp/                          ← All application source files
-│   ├── index.html                   ← App entry point (OpenUI5 CDN bootstrap)
-│   ├── Component.js                 ← UIComponent — initialises models & router
+├── webapp/                          ← Application source
+│   ├── index.html                   ← Standalone entry point
+│   ├── Component.js                 ← UIComponent — inits router & data globals
 │   ├── manifest.json                ← App descriptor (routing, models, CSS, i18n)
-│   ├── data.js                      ← Course metadata, topics & lesson HTML content
+│   ├── data.js                      ← Course metadata, topics & lesson HTML
 │   │
 │   ├── view/
 │   │   ├── App.view.xml             ← Shell + NavContainer (router host)
-│   │   ├── Home.view.xml            ← Professor profile page
+│   │   ├── Home.view.xml            ← Instructor profile page
 │   │   ├── Courses.view.xml         ← Course tile grid
-│   │   ├── CourseDetail.view.xml    ← Unit/lab topics table
-│   │   └── Lesson.view.xml          ← Lesson content viewer (Prev/Next nav)
+│   │   ├── CourseDetail.view.xml    ← Unit / lab topics table
+│   │   └── Lesson.view.xml          ← Lesson content viewer (prev / next)
 │   │
 │   ├── controller/
-│   │   ├── App.controller.js
 │   │   ├── Home.controller.js
 │   │   ├── Courses.controller.js
 │   │   ├── CourseDetail.controller.js
 │   │   └── Lesson.controller.js
 │   │
 │   ├── css/
-│   │   └── style.css                ← Custom Fiori overlay styles
+│   │   └── style.css                ← Custom overlay styles
 │   │
 │   └── i18n/
-│       └── i18n.properties          ← UI text labels (appTitle, appDescription…)
+│       └── i18n.properties          ← Manifest {{appTitle}} / {{appDescription}}
 │
-├── node_modules/                    ← Installed via `npm install` (git-ignored)
 ├── dist/                            ← Production build output (git-ignored)
-├── .appGenInfo.json                 ← Generator / tooling metadata
-├── .gitignore                       ← Ignores node_modules/, dist/, .ui5/
-├── eslint.config.mjs                ← ESLint flat config for webapp JS files
+├── .vscode/launch.json              ← VS Code debug configs (standalone URLs)
+├── .appGenInfo.json                 ← Fiori generator metadata
+├── .gitignore
+├── eslint.config.mjs                ← ESLint flat config for webapp JS
 ├── package.json                     ← npm scripts + devDependencies
-├── package-lock.json                ← Exact dependency lockfile
+├── package-lock.json
 ├── README.md                        ← This file
 ├── ui5.yaml                         ← UI5 Tooling config (serve + build)
-└── ui5-local.yaml                   ← Build exclusion overrides
+└── ui5-local.yaml                   ← Local-serve variant (frameworks pinned)
 ```
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -80,16 +80,14 @@ course-portal/
 npm install
 ```
 
-Installs `@ui5/cli` v4, `eslint`, `gh-pages`, and `globals` into `node_modules/`.
-
-### 2. Start development server
+### 2. Start the dev server
 
 ```bash
 npm start
 ```
 
-Opens at **`http://localhost:8080`**.  
-OpenUI5 is loaded from the public CDN (`https://ui5.sap.com`).
+Opens `index.html` at **`http://localhost:8080`** (Fiori tools may pick the next free port if 8080 is busy).
+OpenUI5 is proxied from `https://ui5.sap.com` via the same-origin `/resources` path (`fiori-tools-proxy`), which avoids Chrome's cross-origin script blocking (ORB).
 
 ### 3. Build for production
 
@@ -97,7 +95,7 @@ OpenUI5 is loaded from the public CDN (`https://ui5.sap.com`).
 npm run build
 ```
 
-Output is written to `dist/` — optimised, minified, and ready to deploy to any static host or SAP BTP.
+Runs `ui5 build -a --clean-dest --include-task=generateCachebusterInfo`. Output goes to `dist/`, bundling framework resources locally so the built app is self-contained.
 
 ### 4. Lint
 
@@ -105,50 +103,44 @@ Output is written to `dist/` — optimised, minified, and ready to deploy to any
 npm run lint
 ```
 
-Runs ESLint on all files under `webapp/`.
+Runs ESLint on `webapp/`.
 
 ---
 
-## ☁️ Deployment
+## Deployment
 
 ### GitHub Pages
 
-This app is deployed to **GitHub Pages** using the `gh-pages` package.
-
 ```bash
-# Build the app
-npm run build
-
-# Deploy dist/ to the gh-pages branch
-npm run deploy-gh
+npm run build       # produce dist/
+npm run deploy-gh   # publish dist/ to the gh-pages branch
 ```
 
-The `deploy-gh` script publishes the contents of `dist/` to the `gh-pages` branch.  
-GitHub Pages is configured to serve from that branch at:
+Served at **[https://bhanuchandarkancharla-ctrl.github.io/course-portal-openui5/](https://bhanuchandarkancharla-ctrl.github.io/course-portal-openui5/)**.
 
-🌐 **[https://bhanuchandarkancharla-ctrl.github.io/course-portal-openui5/](https://bhanuchandarkancharla-ctrl.github.io/course-portal-openui5/)**
+Because the build bundles UI5 (`ui5 build -a`) and `index.html` uses the relative path `resources/sap-ui-core.js`, the deployed app has no external CDN dependency.
 
-> **Note:** The OpenUI5 bootstrap uses the public CDN (`https://ui5.sap.com/1.120.19/resources/sap-ui-core.js`) so no local resources need to be deployed.
-
-### npm scripts reference
+### npm scripts
 
 | Script | Command | Description |
 |---|---|---|
-| `start` | `npm start` | Dev server with Fiori launchpad sandbox |
-| `start-noflp` | `npm run start-noflp` | Dev server opening `index.html` directly |
-| `build` | `npm run build` | Production build → `dist/` |
-| `lint` | `npm run lint` | ESLint on `webapp/` |
-| `deploy-gh` | `npm run deploy-gh` | Deploy `dist/` to GitHub Pages |
+| `start` | `fiori run --open index.html` | Standalone dev server |
+| `start-local` | `fiori run --config ui5-local.yaml --open index.html` | Dev server using `ui5-local.yaml` |
+| `build` | `ui5 build -a --clean-dest --include-task=generateCachebusterInfo` | Production build → `dist/` |
+| `lint` | `eslint webapp` | Lint the webapp source |
+| `deploy` | `fiori verify` | Verify deployment configuration |
+| `deploy-config` | `fiori add deploy-config` | Add / update deploy config |
+| `deploy-gh` | `gh-pages -d dist` | Publish `dist/` to GitHub Pages |
 
 ---
 
-## 🧭 Routing
+## Routing
 
-Hash-based navigation via `sap.m.routing.Router`:
+Hash-based navigation via `sap.m.routing.Router` — see [webapp/manifest.json](webapp/manifest.json).
 
-| Route Name | URL Hash Pattern | View |
+| Route | Pattern | View |
 |---|---|---|
-| `home` | `#` *(default)* | `Home` |
+| `home` | `#` | `Home` |
 | `courses` | `#courses` | `Courses` |
 | `courseDetail` | `#courses/{courseId}` | `CourseDetail` |
 | `lesson` | `#courses/{courseId}/lesson/{lessonId}` | `Lesson` |
@@ -157,7 +149,7 @@ Hash-based navigation via `sap.m.routing.Router`:
 
 ---
 
-## 📚 Courses
+## Courses
 
 ### Full Stack Web Development (`fswd`)
 - **Audience:** CSE-AI & ML · III Year – I Sem
@@ -171,16 +163,16 @@ Hash-based navigation via `sap.m.routing.Router`:
 
 ---
 
-## 🎨 Key SAPUI5 Controls
+## Key SAPUI5 Controls
 
 | Control | Purpose |
 |---|---|
-| `sap.m.Shell` + `sap.m.App` | Application shell & NavContainer page host |
+| `sap.m.Shell` + `sap.m.App` | Root shell & NavContainer page host |
 | `sap.m.Page` + `sap.m.Bar` | Custom header bar on every page |
 | `sap.ui.layout.Grid` | Responsive two-column profile layout (`L6 M12 S12`) |
-| `sap.m.GenericTile` + `NumericContent` | Course cards on Courses page |
-| `sap.m.Table` + `ColumnListItem` | Topics & lab rows in Course Detail |
-| `sap.m.Avatar` | Professor initials avatar (BSL) |
+| `sap.m.GenericTile` + `sap.m.NumericContent` | Course cards on Courses page |
+| `sap.m.Table` + `sap.m.ColumnListItem` | Topics & lab rows in Course Detail |
+| `sap.m.Avatar` | Instructor initials avatar (BSL) |
 | `sap.ui.layout.form.SimpleForm` | Profile detail form rows |
 | `sap.m.FormattedText` | Rich HTML lesson content rendering |
 | `sap.m.ObjectStatus` | Lab/lecture badges & availability indicators |
@@ -188,40 +180,48 @@ Hash-based navigation via `sap.m.routing.Router`:
 
 ---
 
-## 🗄️ Data Model
+## Data Model
 
-`data.js` defines two global objects loaded **synchronously** before UI5:
+`webapp/data.js` exports two objects, `COURSES` and `LESSONS`, via `sap.ui.define`.
+`Component.js` requires the module and exposes them on the `window` as `_cpCourses` and `_cpLessons` so every controller can read the same source without a shared model:
 
-| Global | Type | Contents |
-|---|---|---|
-| `COURSES` | Object map | Course metadata, badge info, topic arrays |
-| `LESSONS` | Object map | Lesson objects: `title`, `course`, `html` content |
+```js
+sap.ui.define(["sap/ui/core/UIComponent", "courseportal/data"], function (UIComponent, oData) {
+    return UIComponent.extend("courseportal.Component", {
+        init: function () {
+            UIComponent.prototype.init.apply(this, arguments);
+            window._cpCourses = oData.COURSES;
+            window._cpLessons = oData.LESSONS;
+            this.getRouter().initialize();
+        }
+    });
+});
+```
 
-`Component.js` wraps both into a **`portal`** `JSONModel` available app-wide.  
-Each view creates its own local `JSONModel` (`detail` or `lesson`) for page-specific state.
+Views that need page-scoped state (`CourseDetail`, `Lesson`) create their own local `JSONModel` under a named alias (`detail`, `lesson`).
 
 ---
 
-## 🛠️ Tooling Config
+## Tooling Config
 
 ### `ui5.yaml`
-- Declares OpenUI5 framework version and libraries used for local serving & build.
+Dev server config. Uses `fiori-tools-proxy` to forward `/resources` and `/test-resources` to `https://ui5.sap.com`, and `fiori-tools-appreload` for livereload on file changes.
 
 ### `ui5-local.yaml`
-- Overrides for the build step — excludes `/test/` and `/localService/` from the bundle.
+Variant that also declares the SAPUI5 framework and library versions locally (`sap.m`, `sap.ui.core`, `sap.ui.layout`, `sap.f`, `sap.ui.unified`, `themelib_sap_horizon`). Used by `npm run start-local`.
 
 ### `eslint.config.mjs`
-- Flat ESLint config targeting `webapp/**/*.js`.
-- `sourceType: "script"` — required because SAP UI5 uses AMD-style `sap.ui.define`, not ES modules.
-- Declares `sap`, `COURSES`, `LESSONS` as known globals to prevent false lint errors.
+Flat ESLint config targeting `webapp/**/*.js`.
+`sourceType: "script"` because UI5 uses AMD-style `sap.ui.define`, not ES modules.
+Declares `sap`, `COURSES`, `LESSONS` as known globals to suppress false lint errors.
 
 ---
 
-## 👩‍🏫 Contact
+## Contact
 
-**Bolem Siva Lakshmi**  
-Assistant Professor — Computer Science & Engineering  
-Anil Neerukonda Institute of Technology & Sciences (ANITS), Visakhapatnam  
+**Bolem Siva Lakshmi**
+Assistant Professor — Computer Science & Engineering
+Anil Neerukonda Institute of Technology & Sciences (ANITS), Visakhapatnam
 📧 bolemsivalakshmi@anits.edu.in
 
 ---

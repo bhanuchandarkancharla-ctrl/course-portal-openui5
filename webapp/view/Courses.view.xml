@@ -54,7 +54,7 @@
                                     <content>
                                         <NumericContent
                                             value="28"
-                                            unit="Topics &amp; Labs"
+                                            scale="Topics &amp; Labs"
                                             icon="sap-icon://syntax"
                                             iconDescription="FSWD"
                                             valueColor="Good" />
@@ -81,7 +81,7 @@
                                     <content>
                                         <NumericContent
                                             value="22"
-                                            unit="Topics &amp; Labs"
+                                            scale="Topics &amp; Labs"
                                             icon="sap-icon://pie-chart"
                                             iconDescription="R Programming"
                                             valueColor="Critical" />
