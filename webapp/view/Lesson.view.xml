@@ -36,7 +36,7 @@
                     <content>
                         <VBox alignItems="Center" class="sapUiSmallMarginBeginEnd sapUiSmallMarginTopBottom">
                             <core:Icon
-                                src="{= ${lesson>/isRProg} ? 'sap-icon://pie-chart' : 'sap-icon://html5'}"
+                                src="{= ${lesson>/isRProg} ? 'sap-icon://pie-chart' : 'sap-icon://syntax'}"
                                 size="1.8rem"
                                 color="{= ${lesson>/isRProg} ? '#7b40f2' : '#0a6ed1'}"
                                 class="sapUiTinyMarginBottom" />

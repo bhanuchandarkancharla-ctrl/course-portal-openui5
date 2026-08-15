@@ -147,7 +147,7 @@
                                 <StandardListItem
                                     title="Full Stack Web Development"
                                     description="CSE-AI &amp; ML · III Year – I Sem"
-                                    icon="sap-icon://html5"
+                                    icon="sap-icon://syntax"
                                     iconInset="false"
                                     type="Active"
                                     press=".onOpenFSWD" />

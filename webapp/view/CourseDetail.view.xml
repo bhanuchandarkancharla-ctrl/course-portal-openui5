@@ -24,7 +24,7 @@
                     <ObjectStatus
                         text="{= ${detail>/isRProg} ? 'R Programming' : 'Full Stack'}"
                         state="{= ${detail>/isRProg} ? 'Warning' : 'Information'}"
-                        icon="{= ${detail>/isRProg} ? 'sap-icon://pie-chart' : 'sap-icon://html5'}" />
+                        icon="{= ${detail>/isRProg} ? 'sap-icon://pie-chart' : 'sap-icon://syntax'}" />
                 </contentRight>
             </Bar>
         </customHeader>
@@ -39,7 +39,7 @@
                     <content>
                         <VBox alignItems="Center" class="sapUiMediumMarginTopBottom sapUiSmallMarginBeginEnd">
                             <core:Icon
-                                src="{= ${detail>/isRProg} ? 'sap-icon://pie-chart' : 'sap-icon://html5'}"
+                                src="{= ${detail>/isRProg} ? 'sap-icon://pie-chart' : 'sap-icon://syntax'}"
                                 size="2.5rem"
                                 color="{= ${detail>/isRProg} ? '#7b40f2' : '#0a6ed1'}"
                                 class="sapUiSmallMarginBottom" />

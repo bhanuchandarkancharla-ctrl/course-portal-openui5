@@ -55,7 +55,7 @@
                                         <NumericContent
                                             value="28"
                                             unit="Topics &amp; Labs"
-                                            icon="sap-icon://html5"
+                                            icon="sap-icon://syntax"
                                             iconDescription="FSWD"
                                             valueColor="Good" />
                                     </content>
