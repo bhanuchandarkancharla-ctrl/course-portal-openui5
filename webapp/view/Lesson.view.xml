@@ -70,10 +70,6 @@
 
                 <!-- Navigation strip -->
                 <Toolbar class="sapUiSmallMarginBottom">
-                    <Button
-                        text="← Back to Course"
-                        type="Transparent"
-                        press=".onNavBack" />
                     <ToolbarSpacer />
                     <Button
                         id="prevBtn"
